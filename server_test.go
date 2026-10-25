@@ -1,9 +1,9 @@
 package hap
 
 import (
-	"github.com/brutella/hap/accessory"
-	"github.com/brutella/hap/characteristic"
-	"github.com/brutella/hap/service"
+	"github.com/homectl-ai/hctl-hap/accessory"
+	"github.com/homectl-ai/hctl-hap/characteristic"
+	"github.com/homectl-ai/hctl-hap/service"
 
 	"bytes"
 	"fmt"
@@ -27,8 +27,11 @@ func TestConfigHash(t *testing.T) {
 
 	v1 := s.version
 
-	// Change the structure of the accessory by adding another service.
-	// The server has to update the version to 2.
+	// Change the structure of the accessory by adding another service, as a
+	// restart with a changed config does (a fresh accessory: ids are assigned
+	// once, and NewServer keeps ones already set). The version has to go up.
+	a = accessory.New(accessory.Info{Name: "ABC"}, accessory.TypeOutlet)
+	a.AddS(service.NewOutlet().S)
 	a.AddS(service.NewSwitch().S)
 	s, err = NewServer(st, a)
 	if err != nil {
