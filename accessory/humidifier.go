@@ -1,7 +1,7 @@
 package accessory
 
 import (
-	"github.com/brutella/hap/service"
+	"github.com/homectl-ai/hctl-hap/service"
 )
 
 type Humidifier struct {

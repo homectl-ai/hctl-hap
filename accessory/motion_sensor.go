@@ -1,6 +1,6 @@
 package accessory
 
-import "github.com/brutella/hap/service"
+import "github.com/homectl-ai/hctl-hap/service"
 
 type MotionSensor struct {
 	*A

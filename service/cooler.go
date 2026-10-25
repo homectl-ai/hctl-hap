@@ -1,7 +1,7 @@
 package service
 
 import (
-	"github.com/brutella/hap/characteristic"
+	"github.com/homectl-ai/hctl-hap/characteristic"
 )
 
 type Cooler struct {

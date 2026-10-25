@@ -1,0 +1,17 @@
+hctl-hap
+Copyright 2022-2024 Matthias Hochgatterer and the hap contributors (and hc, its predecessor)
+Copyright 2026 homectl.ai (changes since the fork)
+
+This is a fork of hap (https://github.com/brutella/hap) by Matthias
+Hochgatterer, a Go implementation of the HomeKit Accessory Protocol, forked at
+v0.0.35 (bc03ca6) and maintained by homectl.ai for homectl (https://homectl.ai).
+All of the protocol work is theirs; see the upstream history in this repository.
+
+Licensed under the Apache License, Version 2.0 (LICENSE), as the original is.
+
+Changes since the fork:
+- Module path github.com/homectl-ai/hctl-hap (package name still hap).
+- pairings: Identifier is optional, so iOS's ListPairings request is accepted
+  instead of failing with "tlv8: EOF" (brutella/hap#67).
+- server_test: TestConfigHash builds a fresh accessory for its second server
+  (it failed at v0.0.35 since NewServer stopped overriding assigned ids).

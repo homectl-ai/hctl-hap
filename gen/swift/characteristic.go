@@ -3,7 +3,7 @@ package swift
 import (
 	"bytes"
 	"fmt"
-	"github.com/brutella/hap/gen"
+	"github.com/homectl-ai/hctl-hap/gen"
 	"log"
 	"reflect"
 	"sort"

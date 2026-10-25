@@ -6,9 +6,9 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/brutella/hap/gen"
-	_ "github.com/brutella/hap/gen/golang"
-	"github.com/brutella/hap/gen/meta"
+	"github.com/homectl-ai/hctl-hap/gen"
+	_ "github.com/homectl-ai/hctl-hap/gen/golang"
+	"github.com/homectl-ai/hctl-hap/gen/meta"
 	"io/ioutil"
 	"log"
 	"os"
@@ -16,7 +16,7 @@ import (
 	"path/filepath"
 )
 
-var LibPath = os.ExpandEnv("$GOPATH/src/github.com/brutella/hap")
+var LibPath = os.ExpandEnv("$GOPATH/src/github.com/homectl-ai/hctl-hap")
 var GenPath = filepath.Join(LibPath, "gen")
 var SvcPkgPath = filepath.Join(LibPath, "service")
 var AccPkgPath = filepath.Join(LibPath, "accessory")

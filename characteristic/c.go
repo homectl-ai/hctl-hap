@@ -3,7 +3,7 @@ package characteristic
 import (
 	"sync"
 
-	"github.com/brutella/hap/log"
+	"github.com/homectl-ai/hctl-hap/log"
 	"github.com/xiam/to"
 
 	"encoding/json"

@@ -1,3 +1,14 @@
+# hctl-hap
+
+**A maintained fork of [hap](https://github.com/brutella/hap) by [Matthias Hochgatterer](https://hochgatterer.me)**, the
+Go implementation of Apple's HomeKit Accessory Protocol. homectl ([homectl.ai](https://homectl.ai)) uses it to make a
+house's devices appear in the Home app and Siri. All credit for the protocol implementation goes to the original authors;
+this fork carries fixes homectl needs (listed in [NOTICE](NOTICE)) and is offered back upstream where they apply.
+
+Import it as `github.com/homectl-ai/hctl-hap` (the package is still `hap`). The original README follows.
+
+---
+
 # hap
 
 [![GoDoc Widget]][GoDoc] [![Travis Widget]][Travis]

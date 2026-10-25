@@ -1,7 +1,7 @@
 package hap
 
 import (
-	"github.com/brutella/hap/hkdf"
+	"github.com/homectl-ai/hctl-hap/hkdf"
 	"github.com/tadglines/go-pkgs/crypto/srp"
 
 	"crypto/sha512"

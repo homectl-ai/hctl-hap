@@ -1,9 +1,9 @@
 package hap
 
 import (
-	"github.com/brutella/hap/accessory"
-	"github.com/brutella/hap/characteristic"
-	"github.com/brutella/hap/log"
+	"github.com/homectl-ai/hctl-hap/accessory"
+	"github.com/homectl-ai/hctl-hap/characteristic"
+	"github.com/homectl-ai/hctl-hap/log"
 
 	"bytes"
 	"encoding/json"
