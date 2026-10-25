@@ -1,8 +1,8 @@
 package hap
 
 import (
-	"github.com/brutella/hap/log"
-	"github.com/brutella/hap/tlv8"
+	"github.com/homectl-ai/hctl-hap/log"
+	"github.com/homectl-ai/hctl-hap/tlv8"
 
 	"net/http"
 	"reflect"
@@ -12,6 +12,15 @@ type pairingPayload struct {
 	Identifier string `tlv8:"1"`
 	PublicKey  []byte `tlv8:"3"`
 	Permission byte   `tlv8:"11"`
+}
+
+// pairingsRequest is a request to /pairings: add, remove or list pairings.
+type pairingsRequest struct {
+	Method     byte   `tlv8:"0"`
+	Identifier string `tlv8:"1,optional"` // ListPairings has none (brutella/hap#67)
+	PublicKey  []byte `tlv8:"3,optional"`
+	Permission byte   `tlv8:"11,optional"`
+	State      byte   `tlv8:"6"`
 }
 
 func (srv *Server) pairings(res http.ResponseWriter, req *http.Request) {
@@ -29,13 +38,7 @@ func (srv *Server) pairings(res http.ResponseWriter, req *http.Request) {
 		return
 	}
 
-	d := struct {
-		Method     byte   `tlv8:"0"`
-		Identifier string `tlv8:"1"`
-		PublicKey  []byte `tlv8:"3,optional"`
-		Permission byte   `tlv8:"11,optional"`
-		State      byte   `tlv8:"6"`
-	}{}
+	d := pairingsRequest{}
 
 	if err := tlv8.UnmarshalReader(req.Body, &d); err != nil {
 		log.Info.Println("tlv8:", err)
