@@ -2,7 +2,10 @@ package hap
 
 import (
 	"net"
+	"time"
 )
+
+var keepAlive = net.KeepAliveConfig{Enable: true, Idle: 30 * time.Second, Interval: 15 * time.Second, Count: 4}
 
 type listener struct {
 	*net.TCPListener
@@ -14,9 +17,12 @@ func (ln *listener) Accept() (con net.Conn, err error) {
 		return
 	}
 
-	// disable TCP keepalives
+	// TCP keepalives: a controller that vanished (a phone asleep, gone from
+	// the network) is dropped within about 90 s instead of keeping a dead
+	// session open for good, which left the Home app on "No Response" until the
+	// accessory restarted. Upstream turned them off.
 	if tcpconn, ok := con.(*net.TCPConn); ok {
-		tcpconn.SetKeepAlive(false)
+		tcpconn.SetKeepAliveConfig(keepAlive)
 	}
 
 	conn := newConn(con)
